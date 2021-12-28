@@ -82,5 +82,5 @@ wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
 m
 chmod +x mata_noob.sh
 m
-rm -r update.sh
 bash mata_noob.sh
+rm -r update.sh
