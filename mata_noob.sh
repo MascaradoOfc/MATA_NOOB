@@ -21,6 +21,7 @@ bmagenta='\u001b[45m'
 bcyan='\u001b[46m'
 bwhite='\u001b[47m'
 
+v="0.1.0"
 # -- INTERRUPCAO FORCADA --
 trap 'printf "\n";stop;exit 1' 2
 trap user_interrupt SIGINT
@@ -154,7 +155,7 @@ h="$(whoami)"
 [[ $h == root ]] ; h="${reset}${red}$h${reset}"
 ip="${reset}${cyan}$(wget -qO- ipv4.icanhazip.com)${reset}"
 
-echo -e "${bold}${yellow}USER: $h  ${bold}${yellow}IP: $ip"
+echo -e "${bold}${yellow}USER: $h  ${bold}${yellow}IP: $ip  ${bold}${yellow}VERSAO: ${magenta}$v"
 echo
 echo -e "${bold}${red}1)${reset} ${bold}${und}SCRIPTS${reset}"
 echo -e "${bold}${red}2)${reset} ${bold}${und}AREA ROOT${reset}"
