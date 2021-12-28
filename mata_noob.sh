@@ -1,5 +1,5 @@
 #!/bin/bash
-v="0.1.2"
+v="0.1.3"
 # -- CORES --
 reset='\u001b[0m'
 bold='\u001b[1m'
@@ -28,13 +28,26 @@ trap user_interrupt SIGINT
 trap user_interrupt SIGTSTP
 user_interrupt(){
 clear
-echo -e "${red}${bold}CTRL+C PRESSIONADO\nFECHADO O SCRIPT\nCREDITOS: ${blue}Mr.Robot${reset}"
+echo -e "${bold}${cyan}CTRL+C${yellow} FOI PRESSIONADO"
+echo -e "${bold}${yellow}O SCRIPT FOI ENCERRADO"
+echo -e "${bold}${yellow}CREDITOS:${reset}${magenta} @MASCARADO_OFC"
+echo -e "${bold}${yellow}CREDITOS:${reset}${und}${magenta}"https://t.me/MASCARADO_OFC
 echo
 exit 1
 }
 
 #  > /dev/null 2>&1
 # [NOME_FUNÇÃO] () { [AÇÕES DA FUNÇÃO] }
+
+m_ip () {
+ASESR="$(ping -c 5 -q www.google.com >&/dev/null; echo $?)" &> /dev/null
+if [[ "$ASESR" != 0 ]]
+then
+   ip="${reset}${cyan}SEM NET${reset}"
+else
+ip="${reset}${cyan}$(wget -qO- ipv4.icanhazip.com)${reset}"
+fi
+}
 
 banner () {
 echo -e "${red}${bold} ███▄ ▄███▓ ▄▄▄     ▄▄▄█████▓ ▄▄▄      "
@@ -145,14 +158,30 @@ menu
 }
 
 atualizar () {
-clear
-banner
-rm mata_noob.sh
-wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
-chmod +x mata_noob.sh
-sleep 5
-clear
-bash mata_noob.sh
+#clear
+#banner
+#rm mata_noob.sh
+#wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
+#chmod +x mata_noob.sh
+#sleep 5
+#clear
+#bash mata_noob.sh
+ASESR="$(ping -c 5 -q www.google.com >&/dev/null; echo $?)" &> /dev/null
+if [[ "$ASESR" != 0 ]]
+then
+   clear
+   banner
+   echo -e "${bold}${red}!!! ${yellow}VOCE PRECISA ESTAR CONECTADO NA INTERNET ${red}!!!"
+   sleep 3
+   menu
+else
+   wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/versao
+   r="$(cat versao)"
+   rm -r versao
+   [[ $v == $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
+   [[ $v > $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
+   [[ $v < $r ]] ; rm -r update.sh && wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/update.sh &> /dev/null && bash update.sh
+fi
 }
 
 menu () {
@@ -162,7 +191,7 @@ banner
 h="$(whoami)"
 [[ $h != root ]] ; h="${reset}${green}$h${reset}"
 [[ $h == root ]] ; h="${reset}${red}$h${reset}"
-ip="${reset}${cyan}$(wget -qO- ipv4.icanhazip.com)${reset}"
+m_ip
 
 echo -e "${bold}${yellow}USER: $h  ${bold}${yellow}IP: $ip  ${bold}${yellow}VERSAO: ${magenta}$v"
 echo
