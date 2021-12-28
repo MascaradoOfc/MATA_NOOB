@@ -21,7 +21,7 @@ bmagenta='\u001b[45m'
 bcyan='\u001b[46m'
 bwhite='\u001b[47m'
 
-v="0.1.0"
+v="0.1.1"
 # -- INTERRUPCAO FORCADA --
 trap 'printf "\n";stop;exit 1' 2
 trap user_interrupt SIGINT
@@ -129,6 +129,14 @@ menu
 }
 
 menu_root () {
+clear
+banner
+echo -e "${bold}${yellow} ! EM DESENVOLVIMENTO !"
+sleep 5
+menu
+}
+
+menu_scripts () {
 clear
 banner
 echo -e "${bold}${yellow} ! EM DESENVOLVIMENTO !"
