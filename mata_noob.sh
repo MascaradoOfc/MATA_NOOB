@@ -31,8 +31,8 @@ clear
 echo -e "${bold}${cyan}CTRL+C${yellow} FOI PRESSIONADO"
 echo -e "${bold}${yellow}O SCRIPT FOI ENCERRADO"
 echo -e "${bold}${yellow}CREDITOS:${reset}${magenta} @MASCARADO_OFC"
-echo -e "${bold}${yellow}CREDITOS:${reset}${und}${magenta}"https://t.me/MASCARADO_OFC
-echo -e "$reset"
+echo -e "${bold}${yellow}CREDITOS:${reset}${und}${magenta}"https://t.me/MASCARADO_OFC${reset}"
+echo
 exit 1
 }
 
