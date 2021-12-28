@@ -150,6 +150,7 @@ banner
 rm mata_noob.sh
 wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
 chmod +x mata_noob.sh
+sleep 5
 clear
 bash mata_noob.sh
 }
