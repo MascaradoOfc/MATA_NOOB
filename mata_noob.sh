@@ -172,7 +172,7 @@ echo
 read -p $'\u001b[34m\u001b[1mESCOLHA UMA OPCAO: \u001b[0m' menu_option
 
 if [[ $menu_option == 1 || $menu_option == 01 ]]; then
-menu
+menu_scripts
 elif [[ $menu_option == 2 || $menu_option == 02 ]]; then
 menu_root
 elif [[ $menu_option == 3 || $menu_option == 03 ]]; then
