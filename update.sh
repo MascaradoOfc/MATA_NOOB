@@ -21,6 +21,21 @@ bmagenta='\u001b[45m'
 bcyan='\u001b[46m'
 bwhite='\u001b[47m'
 
+# -- INTERRUPCAO FORCADA --
+trap 'printf "\n";stop;exit 1' 2
+trap user_interrupt SIGINT
+trap user_interrupt SIGTSTP
+user_interrupt(){
+clear
+echo -e "${bold}${cyan}CTRL+C${yellow} FOI PRESSIONADO"
+echo -e "${bold}${yellow}O SCRIPT FOI ENCERRADO"
+echo -e "${bold}${yellow}CREDITOS:${reset}${magenta} @MASCARADO_OFC"
+echo -e "${bold}${yellow}CREDITOS:${reset}${und}${magenta}"https://t.me/MASCARADO_OFC
+echo
+exit 1
+}
+
+# -- BANNER DO SCRIPT --
 banner () {
 echo -e "${red}${bold} ███▄ ▄███▓ ▄▄▄     ▄▄▄█████▓ ▄▄▄      "
 echo -e "▓██▒▀█▀ ██▒▒████▄   ▓  ██▒ ▓▒▒████▄    "
@@ -44,4 +59,28 @@ echo -e "                                             ░   "
 }
 
 clear
+m () {
+clear
 banner
+echo -e "${bold}${yellow}ATUALIZANDO O SCRIPT, AGUARDE"
+}
+
+ASESR="$(ping -c 5 -q www.google.com >&/dev/null; echo $?)" &> /dev/null
+if [[ "$ASESR" != 0 ]]
+then
+   clear
+   banner
+   echo -e "${bold}${red}!!! ${yellow}VOCE PRECISA ESTAR CONECTADO NA INTERNET ${red}!!!"
+   sleep 3
+   bash mata_noob.sh
+else
+   m
+fi
+rm -r mata_noob.sh
+m
+wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
+m
+chmod +x mata_noob.sh
+m
+rm -r update.sh
+bash mata_noob.sh
