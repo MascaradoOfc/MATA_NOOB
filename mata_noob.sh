@@ -178,12 +178,7 @@ then
    sleep 3
    menu
 else
-   wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/versao &> /dev/null
-   r="$(cat versao)"
-   rm -r versao &> /dev/null
-   [[ $v == $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
-   [[ $v > $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
-   [[ $v < $r ]] ; rm -r update.sh && wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/update.sh &> /dev/null && bash update.sh
+   rm -r update.sh &> /dev/null ; wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/update.sh &> /dev/null ; bash update.sh
 fi
 }
 
