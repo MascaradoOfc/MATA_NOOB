@@ -82,5 +82,6 @@ wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
 m
 chmod +x mata_noob.sh
 m
-bash mata_noob.sh
+echo -e "${bold}${yellow}SCRIPT ATUALIZADO, DIGITE ${cyan}bash mata_noob.sh"
 rm -r update.sh
+bash mata_noob.sh
