@@ -1,5 +1,5 @@
 #!/bin/bash
-v="0.1.3"
+v="0.1.4"
 # -- CORES --
 reset='\u001b[0m'
 bold='\u001b[1m'
@@ -32,7 +32,7 @@ echo -e "${bold}${cyan}CTRL+C${yellow} FOI PRESSIONADO"
 echo -e "${bold}${yellow}O SCRIPT FOI ENCERRADO"
 echo -e "${bold}${yellow}CREDITOS:${reset}${magenta} @MASCARADO_OFC"
 echo -e "${bold}${yellow}CREDITOS:${reset}${und}${magenta}"https://t.me/MASCARADO_OFC
-echo
+echo -e "$reset"
 exit 1
 }
 
@@ -141,7 +141,7 @@ sleep 0.5
 menu
 }
 
-menu_root () {
+menu_dev () {
 clear
 banner
 echo -e "${bold}${yellow} ! EM DESENVOLVIMENTO !"
@@ -152,20 +152,23 @@ menu
 menu_scripts () {
 clear
 banner
-echo -e "${bold}${yellow} ! EM DESENVOLVIMENTO !"
-sleep 5
+tab
+# echo -e "${bold}${red})${reset} ${bold}${und}${reset}"
+echo -e "${bold}${red}1)${reset} ${bold}${und}COLETA DE INFORMACOES${reset}"
+echo -e "${bold}${red}0)${reset} ${bold}${und}VOLTAR${reset}"
+
+read -p $'\u001b[34m\u001b[1mESCOLHA UMA OPCAO: \u001b[0m' menu_option
+
+if [[ $menu_option == 1 || $menu_option == 01 ]]; then
+menu_dev
+elif [[ $menu_option == 0 || $menu_option == 00 ]]; then
 menu
+else
+menu_scripts
+fi
 }
 
 atualizar () {
-#clear
-#banner
-#rm mata_noob.sh
-#wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/mata_noob.sh
-#chmod +x mata_noob.sh
-#sleep 5
-#clear
-#bash mata_noob.sh
 ASESR="$(ping -c 5 -q www.google.com >&/dev/null; echo $?)" &> /dev/null
 if [[ "$ASESR" != 0 ]]
 then
@@ -175,36 +178,39 @@ then
    sleep 3
    menu
 else
-   wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/versao
+   wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/versao &> /dev/null
    r="$(cat versao)"
-   rm -r versao
+   rm -r versao &> /dev/null
    [[ $v == $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
    [[ $v > $r ]] ; clear && banner && echo -e "${bold}${yellow}VOCE JA ESTA NA ULTIMA VERSAO" && sleep 3 && menu
    [[ $v < $r ]] ; rm -r update.sh && wget https://raw.githubusercontent.com/MascaradoOfc/MATA_NOOB/main/update.sh &> /dev/null && bash update.sh
 fi
 }
 
-menu () {
-clear
-banner
-
+tab () {
 h="$(whoami)"
 [[ $h != root ]] ; h="${reset}${green}$h${reset}"
 [[ $h == root ]] ; h="${reset}${red}$h${reset}"
 m_ip
-
 echo -e "${bold}${yellow}USER: $h  ${bold}${yellow}IP: $ip  ${bold}${yellow}VERSAO: ${magenta}$v"
 echo
+}
+
+menu () {
+clear
+banner
+tab
 echo -e "${bold}${red}1)${reset} ${bold}${und}SCRIPTS${reset}"
 echo -e "${bold}${red}2)${reset} ${bold}${und}AREA ROOT${reset}"
 echo -e "${bold}${red}3)${reset} ${bold}${und}ATUALIZAR SCRIPT${reset}"
 echo
+
 read -p $'\u001b[34m\u001b[1mESCOLHA UMA OPCAO: \u001b[0m' menu_option
 
 if [[ $menu_option == 1 || $menu_option == 01 ]]; then
 menu_scripts
 elif [[ $menu_option == 2 || $menu_option == 02 ]]; then
-menu_root
+menu_dev
 elif [[ $menu_option == 3 || $menu_option == 03 ]]; then
 atualizar
 else
