@@ -153,7 +153,6 @@ menu_scripts () {
 clear
 banner
 tab
-# echo -e "${bold}${red})${reset} ${bold}${und}${reset}"
 echo -e "${bold}${red}1)${reset} ${bold}${und}COLETA DE INFORMACOES${reset}"
 echo -e "${bold}${red}0)${reset} ${bold}${und}VOLTAR${reset}"
 
