@@ -1,4 +1,5 @@
 #!/bin/bash
+v="0.1.2"
 # -- CORES --
 reset='\u001b[0m'
 bold='\u001b[1m'
@@ -21,7 +22,6 @@ bmagenta='\u001b[45m'
 bcyan='\u001b[46m'
 bwhite='\u001b[47m'
 
-v="0.1.1"
 # -- INTERRUPCAO FORCADA --
 trap 'printf "\n";stop;exit 1' 2
 trap user_interrupt SIGINT
